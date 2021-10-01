@@ -151,14 +151,14 @@ class ImageUploader {
             range.index,
             LoadingImage.blotName,
             `${url}`,
-            "user"
+            "silent"
         );
     }
 
     insertToEditor(url) {
         const range = this.range;
         // Delete the placeholder image
-        this.quill.deleteText(range.index, 3, "user");
+        this.quill.deleteText(range.index, 3, "silent");
         // Insert the server saved image
         this.quill.insertEmbed(range.index, "image", `${url}`, "user");
 
@@ -168,7 +168,7 @@ class ImageUploader {
 
     removeBase64Image() {
         const range = this.range;
-        this.quill.deleteText(range.index, 3, "user");
+        this.quill.deleteText(range.index, 3, "silent");
     }
 }
 
