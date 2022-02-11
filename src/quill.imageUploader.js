@@ -113,16 +113,12 @@ class ImageUploader {
 
         const fileReader = new FileReader();
 
-        fileReader.addEventListener(
-            "load",
-            () => {
-                if (!isUploadReject) {
-                    let base64ImageSrc = fileReader.result;
-                    this.insertBase64Image(base64ImageSrc);
-                }
-            },
-            false
-        );
+        fileReader.onload = () => {
+            if (!isUploadReject) {
+                let base64ImageSrc = fileReader.result;
+                this.insertBase64Image(base64ImageSrc);
+            }
+        }
 
         if (file) {
             fileReader.readAsDataURL(file);
